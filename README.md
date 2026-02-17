@@ -31,7 +31,7 @@ $ qew [files-to-edit]
 
 If you want to kill the background server process to save memory, 
 `M-x kill-emacs` to kill all the clients and the server in the current
-session. But the startup latency will increase next time when you run `qe`/`qew`.
+session. But the startup latency will increase next time when you run `qe`/`qew` again.
 
 ## Misc
 
