@@ -23,7 +23,7 @@ $ qe
 $ qe [files-to-edit]
 ```
 
-Use the `qe` command to replace `emacs` (GUI mode):
+Use the `qew` command to replace `emacs` (GUI mode):
 ```sh
 $ qew
 $ qew [files-to-edit]
