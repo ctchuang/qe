@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+ARGS=("$@")
+
+_get_emacs_session() {
+  if [ -n "$TMUX" ]; then
+    tmux display-message -p '#S' 2>/dev/null || echo "terminal-default"
+  else
+    echo "terminal-default"
+  fi
+}
+
+SESSION_NAME=$(_get_emacs_session)
+
+if ! emacsclient -t -s "$SESSION_NAME" "${ARGS[@]}" 2>/dev/null; then
+  echo ">> Starting Emacs daemon for session: ${SESSION_NAME}"
+  emacs --daemon="$SESSION_NAME"
+  emacsclient -t -s "$SESSION_NAME" "${ARGS[@]}"
+fi
