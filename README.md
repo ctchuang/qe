@@ -1,0 +1,2 @@
+# qe
+Quick Emacs
