@@ -44,7 +44,7 @@ session. But the startup latency will increase next time when you run `qe`/`qew`
 If you want to run multiple `qe` in `tmux` to look like a tab-like UI,
 add this to `.emacs`:
 
-!![Tmux Screenshot](etc/tmux.png)
+![Tmux Screenshot](etc/tmux.png)
 
 ```lisp
 (defun inside-tmux-p ()
