@@ -7,11 +7,11 @@
    - How?
      - Start Emacs server first (if not already running), then launch `emacsclient`
 
-2. Launch different Emacs servers in different environments
+2. Launch different Emacs servers in different sessions
 
-   - Ex:  different tmux sessions and GUI mode.
+   - Ex: different servers for different `tmux` sessions and GUI mode.
    - Why?
-      - We can work on one repository in one `tmux` session by
+      - We can work on one git repository in one `tmux` session by
         isolating opened buffers and tags tables ( `visit-tags-table`).
 
 ## Usage
@@ -23,12 +23,21 @@ $ qe
 $ qe [files-to-edit]
 ```
 
+Use the `qe` command to replace `emacs` (GUI mode):
+```sh
+$ qew
+$ qew [files-to-edit]
+``` 
+
+If you want to kill the background server process to save memory, 
+`M-x kill-emacs` to kill all the clients and the server in the current
+session. But the startup latency will increase next time when you run `qe`/`qew`.
+
 ## Misc
 
 ### Troubleshootings
 
 - `C-h v server-name` (the currrent Emacs server/socket name)
-- `M-x kill-emacs` to kill both the clients and the server per current `server-name`
 
 ###  Better UI in `tmux` 
 
@@ -58,7 +67,7 @@ add this to `.emacs`:
 
 ###  Trivia on Mac Setup
 
-1. Recommended to use Homebrew to install Emacs with GUI support:
+1. Recommended to use [Homebrew](https://brew.sh) to install Emacs with both GUI and terminal support:
 
 ```sh
   $ brew install --cask emacs
@@ -67,9 +76,9 @@ add this to `.emacs`:
 2.  Homebrew may register Emacs server in the background  with `LaunchServices` of Mac OS:
 
 ```sh
-# Check
-$ brew services list
+  # Check
+  $ brew services list
 
-# Stop it if you like
-$ brew services stop emacs
+  # Stop it if you want
+  $ brew services stop emacs
 ```

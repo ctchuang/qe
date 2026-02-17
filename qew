@@ -1,0 +1,11 @@
+#!/bin/bash -e
+
+ARGS=("$@")
+
+SESSION_NAME=GUI
+
+if ! emacsclient -c -n -s "$SESSION_NAME" "${ARGS[@]}" 2>/dev/null; then
+  echo ">> Starting Emacs daemon for session: ${SESSION_NAME}"
+  emacs --daemon="$SESSION_NAME"
+  emacsclient -c -n -s "$SESSION_NAME" "${ARGS[@]}"
+fi
